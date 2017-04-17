@@ -10,7 +10,7 @@ module.exports = app => {
   app.use((req, res, next) => {
     var reqUrl = url.parse(req.url);
     if (
-      !req.session.currentUser &&
+      !req.session.username &&
       !["/", "/login", "/sessions"].includes(reqUrl.pathname)
     ) {
       res.redirect("/login");
@@ -22,7 +22,7 @@ module.exports = app => {
   // New
   var onNew = (req, res) => {
     if (req.session.username) {
-      res.redirect("/users");
+      res.redirect("users");
     } else {
       res.render("sessions/new");
     }
@@ -39,7 +39,7 @@ module.exports = app => {
 
   // Destroy
   var onDestroy = (req, res) => {
-    req.session.currentUser = null;
+    req.session.username = null;
     res.redirect("/login");
   };
   router.get("/logout", onDestroy);
