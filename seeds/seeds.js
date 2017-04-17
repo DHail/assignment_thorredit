@@ -1,4 +1,4 @@
-const MULTIPLIER = 1;
+const MULTIPLIER = 6;
 
 module.exports = () => {
   // ----------------------------------------
@@ -23,5 +23,13 @@ module.exports = () => {
       promises.push(model.save());
     });
   });
-  return Promise.all(promises);
+  return Promise.all(users);
 };
+
+var posts = [];
+for (let i = 0; i < MULTIPLIER * 2; i++) {
+  var post = new Post({
+    title: `Foobie${i}`,
+    body: `Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet`
+  });
+}
