@@ -6,7 +6,7 @@ module.exports = () => {
   // ----------------------------------------
   console.log("Creating Users");
   var users = [];
-  for (let i = 0; i < MULTIPLIER * 2; i++) {
+  for (let i = 0; i < MULTIPLIER * 3; i++) {
     var user = new User({
       fname: "Foo",
       lname: "Bar",
@@ -15,30 +15,37 @@ module.exports = () => {
     });
     users.push(user);
   }
+  //seed comments
+  var comments = [];
+  for (let i = 0; i < MULTIPLIER * 3; i++) {
+    var comment = new Comment({
+      title: `Foobie${i}`,
+      body: `Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet`,
+      author: users[1],
+      comment: [],
+      score: i
+    });
+    comments.push(comment);
+  }
+  //seed posts
+  var posts = [];
+  for (let i = 0; i < MULTIPLIER * 3; i++) {
+    var post = new Post({
+      title: `Foobie${i}`,
+      body: `Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet`,
+      author: users[1],
+      comment: comments[1],
+      score: i
+    });
+    posts.push(post);
+  }
 
   console.log("Saving...");
   var promises = [];
-  [users].forEach(collection => {
+  [users, comments, posts].forEach(collection => {
     collection.forEach(model => {
       promises.push(model.save());
     });
   });
-  return Promise.all(users);
+  return Promise.all(promises);
 };
-var posts = [];
-var someUser = User.find({
-  return user._id;
-}).limit(1).then(userID) {
-  var someComment = Comment.find({
-    {$match: userID}
-  }).then(comment) {
-    for (let i = 0; i < MULTIPLIER * 2; i++) {
-      var post = new Post({
-        title: `Foobie${i}`,
-        body: `Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet`,
-        author: userID,
-        comment: comment
-      });
-    }
-  }
-}

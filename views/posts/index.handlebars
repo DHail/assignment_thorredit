@@ -9,10 +9,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
-        <th>Email</th>
+        <th>Title</th>
+        <th>Post</th>
+        <th>Score</th>
+        <th>Author</th>
         <th></th>
         <th></th>
       </tr>
@@ -30,7 +30,7 @@
             <a href="/posts/{{ post.id }}">{{ post.score }}</a>
           </td>
           <td>
-            <a href="/posts/{{ post.id }}">{{ post.author }}</a>
+            <a href="/posts/{{ post.id }}">{{ post.author.username }}</a>
           </td>
         </tr>
       {{/each }}
