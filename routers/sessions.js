@@ -21,7 +21,7 @@ module.exports = app => {
 
   // New
   var onNew = (req, res) => {
-    if (req.session.currentUser) {
+    if (req.session.username) {
       res.redirect("/users");
     } else {
       res.render("sessions/new");
@@ -32,24 +32,9 @@ module.exports = app => {
 
   // Create
   router.post("/sessions", (req, res) => {
-    User.findOne({
-      username: req.body.username,
-      email: req.body.email
-    })
-      .then(user => {
-        if (user) {
-          req.session.currentUser = {
-            username: user.username,
-            email: user.email,
-            id: user.id,
-            _id: user._id
-          };
-          res.redirect("/users");
-        } else {
-          res.redirect("/login");
-        }
-      })
-      .catch(e => res.status(500).send(e.stack));
+    req.session.username = req.body.username;
+    req.session.email = req.body.email;
+    res.redirect("/users");
   });
 
   // Destroy
