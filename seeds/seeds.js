@@ -25,11 +25,20 @@ module.exports = () => {
   });
   return Promise.all(users);
 };
-
 var posts = [];
-for (let i = 0; i < MULTIPLIER * 2; i++) {
-  var post = new Post({
-    title: `Foobie${i}`,
-    body: `Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet`
-  });
+var someUser = User.find({
+  return user._id;
+}).limit(1).then(userID) {
+  var someComment = Comment.find({
+    {$match: userID}
+  }).then(comment) {
+    for (let i = 0; i < MULTIPLIER * 2; i++) {
+      var post = new Post({
+        title: `Foobie${i}`,
+        body: `Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet`,
+        author: userID,
+        comment: comment
+      });
+    }
+  }
 }

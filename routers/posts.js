@@ -11,3 +11,6 @@ router.get("/", (req, res) => {
     })
     .catch(e => res.status(500).send(e.stack));
 });
+
+
+module.exports = router;

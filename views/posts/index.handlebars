@@ -1,14 +1,11 @@
 
 
 <header class="page-header">
-  <h1>Users</h1>
-  <a href="/users/new" class="btn btn-primary">+ New User</a>
-  <a href="/logout" class="btn btn-primary">+ Log Out</a>
-
+  <h1>Posts</h1>
 </header>
 
 
-{{#if users.length }}
+{{#if posts.length }}
   <table class="table">
     <thead>
       <tr>
@@ -21,25 +18,19 @@
       </tr>
     </thead>
     <tbody>
-      {{#each users as |user| }}
+      {{#each posts as |post| }}
         <tr>
           <td>
-            <a href="/users/{{ user.id }}">{{ user.fname }}</a>
+            <a href="/posts/{{ post.id }}">{{ post.title }}</a>
           </td>
           <td>
-            <a href="/users/{{ user.id }}">{{ user.lname }}</a>
+            <a href="/posts/{{ post.id }}">{{ post.body }}</a>
           </td>
           <td>
-            <a href="/users/{{ user.id }}">{{ user.username }}</a>
+            <a href="/posts/{{ post.id }}">{{ post.score }}</a>
           </td>
           <td>
-            <a href="/users/{{ user.id }}">{{ user.email }}</a>
-          </td>
-          <td>
-            <a href="/users/{{ user.id }}/edit">Edit</a>
-          </td>
-          <td>
-            <a href="/users/{{ user.id }}?_method=delete" class="text-danger">Delete</a>
+            <a href="/posts/{{ post.id }}">{{ post.author }}</a>
           </td>
         </tr>
       {{/each }}
