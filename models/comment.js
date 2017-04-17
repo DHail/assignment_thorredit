@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-// var bluebird = require("bluebird");
 var Schema = mongoose.Schema;
 var Commentable = require("./commentable");
 

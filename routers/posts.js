@@ -14,4 +14,15 @@ router.get("/", (req, res) => {
     .catch(e => res.status(500).send(e.stack));
 });
 
+router.get("/:postid", (req, res) => {
+  var postID = req.body.postid;
+  Post.findById(postID)
+    .populate("author")
+    .then(post => {
+      console.log(post);
+      res.render("posts/index", {post});
+    })
+    .catch(e => res.status(500).send(e.stack));
+});
+
 module.exports = router;
